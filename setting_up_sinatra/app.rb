@@ -1,3 +1,4 @@
+# file: app.rb
 require 'sinatra/base'
 require 'sinatra/reloader'
 
@@ -6,5 +7,14 @@ class Application < Sinatra::Base
   # without having to restart the server.
   configure :development do
     register Sinatra::Reloader
+  end
+
+  # Declares a route that responds to a request with:
+  #  - a GET method
+  #  - the path /
+  get '/hello' do
+    name = params[:name]
+ 
+    return "Hello #{name}"
   end
 end
