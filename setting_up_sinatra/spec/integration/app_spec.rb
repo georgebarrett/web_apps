@@ -52,4 +52,24 @@ describe Application do
       expect(response.body).to eq("Thanks Aphex Twin, you sent this message: 42")
     end
   end
+
+  context 'POST to /sort-names' do
+    it 'returns a sorted list of names' do
+      
+      response = post("/sort-names", names: "Joe, Alice, Zoe, Julia, Kieran")
+
+      expect(response.status).to eq (200)
+      expect(response.body).to eq("Alice, Joe, Julia, Kieran, Zoe")
+
+    end
+  end
 end
+
+# # Request:
+# POST http://localhost:9292/sort-names
+
+# # With body parameters:
+# names=Joe,Alice,Zoe,Julia,Kieran
+
+# # Expected response (sorted list of names):
+# Alice,Joe,Julia,Kieran,Zoe
