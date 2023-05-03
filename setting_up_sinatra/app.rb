@@ -12,16 +12,16 @@ class Application < Sinatra::Base
   # Declares a route that responds to a request with:
   #  - a GET method
   #  - the path /
-  get '/hello' do
-    name = params[:name]
+  # get '/hello' do
+  #   name = params[:name]
  
-    return "Hello #{name}"
-  end
+  #   return "Hello #{name}"
+  # end
 
-  get "/hello" do
-    name = params[:name]
-    return "Hello #{name}"
-  end
+  # get "/hello" do
+  #   name = params[:name]
+  #   return "Hello #{name}"
+  # end
 
   get "/names" do
     return "Julia, Mary, Karim"
@@ -38,6 +38,10 @@ class Application < Sinatra::Base
     names = params[:names]
 
     return names.split(", ").sort.join(", ")
+  end
+
+  get '/hello' do
+    return erb(:hello)
   end
 
 end

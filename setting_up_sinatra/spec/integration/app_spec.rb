@@ -21,24 +21,24 @@ describe Application do
     end
   end
   
-  context "GET to /" do
-    it "should return 'Hello George'" do
-      # Send a GET request to /
-      # and returns a response object we can test.
-      response = get("/hello?name=George")
+  # context "GET to /" do
+  #   it "should return 'Hello George'" do
+  #     # Send a GET request to /
+  #     # and returns a response object we can test.
+  #     response = get("/hello?name=George")
 
-      # Assert the response status code and body.
-      expect(response.status).to eq(200)
-      expect(response.body).to eq("Hello George")
-    end
+  #     # Assert the response status code and body.
+  #     expect(response.status).to eq(200)
+  #     expect(response.body).to eq("Hello George")
+  #   end
 
-    it "should return 'Hello Aphra'" do
-      response = get("/hello?name=Aphra")
+  #   it "should return 'Hello Aphra'" do
+  #     response = get("/hello?name=Aphra")
 
-      expect(response.status).to eq(200)
-      expect(response.body).to eq("Hello Aphra")
-    end
-  end
+  #     expect(response.status).to eq(200)
+  #     expect(response.body).to eq("Hello Aphra")
+  #   end
+  # end
 
   context "POST to /submit" do
     it "returns 200 OK with the right content" do
@@ -61,6 +61,15 @@ describe Application do
       expect(response.status).to eq (200)
       expect(response.body).to eq("Alice, Joe, Julia, Kieran, Zoe")
 
+    end
+  end
+
+  context 'GET to /hello' do
+    it 'returns 200 OK' do
+      response = get('/hello')
+
+      expect(response.status).to eq 200
+      expect(response.body).to include('<h1>Hello!</h1>')
     end
   end
 end
